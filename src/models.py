@@ -18,7 +18,11 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "nombre": self.nombre,
+            "fecha_suscripcion": self.fecha_suscripcion,
+            "apellido": self.apellido,
             "email": self.email,
+            "favoritos": self.favoritos,
             # do not serialize the password, its a security breach
         }
         
@@ -36,7 +40,11 @@ class Personajes(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+            "nombre": self.nombre,
+            "altura": self.altura,
+            "genero": self.genero,
+            "peso": self.peso,
+            "favoritos": self.favoritos,
             # do not serialize the password, its a security breach
         }
         
@@ -54,8 +62,10 @@ class Planetas(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
-            # do not serialize the password, its a security breach          
+            "diametro": self.diametro,
+            "periodo_orbital": self.periodo_orbital,
+            "poblacion": self.poblacion,
+            "favoritos": self.favoritos,
             }
         
 class Favoritos(db.Model):
@@ -70,7 +80,9 @@ class Favoritos(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+            "usuario_id": self.usuario_id,
+            "planetas_id": self.planetas_id,
+            "personajes_id": self.personajes_id,
             # do not serialize the password, its a security breach          
             }
             
